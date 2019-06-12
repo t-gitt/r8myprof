@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\University;
+use \App\professors;
+use \App\Course;
+
 
 class CoursesController extends Controller
 {
@@ -15,6 +18,8 @@ class CoursesController extends Controller
     public function index()
     {
         //
+        $courses = Course::all();
+        return view('courses.index')->with('courses', $courses);
     }
 
     /**
@@ -42,6 +47,19 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         //
+
+            $this->validate($request, [
+            'university_id' => 'required',
+            'code' => 'required',
+            'name' => 'required',
+        ]);
+        // Create Course
+        $course = new Course;
+        $course->name = $request->input('name');
+        $course->code = $request->input('code');
+        $course->university_id = $request->input('university_id');
+        $course->save();
+        return redirect('/courses')->with('success', 'Course added');
     }
 
     /**

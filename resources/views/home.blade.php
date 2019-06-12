@@ -16,8 +16,8 @@
                         </div>
                     @endif
 
-                    <a href="/professors/create" class="btn btn-primary">Add a professor</a>
-                    <a href="#" class="btn btn-primary">Rate a professor</a>
+                    <a href="/professors/create" class="btn btn-dark">Add a professor</a>
+                    <a href="/ratings/create" class="btn btn-dark">Rate a professor</a>
                     <br>
                     <br>
 

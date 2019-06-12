@@ -77,6 +77,7 @@ return array(
     'App\\Http\\Controllers\\PagesController' => $baseDir . '/app/Http/Controllers/PagesController.php',
     'App\\Http\\Controllers\\ProfessorsController' => $baseDir . '/app/Http/Controllers/ProfessorsController.php',
     'App\\Http\\Controllers\\RatingsController' => $baseDir . '/app/Http/Controllers/RatingsController.php',
+    'App\\Http\\Controllers\\StudentController' => $baseDir . '/app/Http/Controllers/StudentController.php',
     'App\\Http\\Controllers\\UniversitiesController' => $baseDir . '/app/Http/Controllers/UniversitiesController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

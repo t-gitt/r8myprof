@@ -47,14 +47,14 @@ class RatingsController extends Controller
         //
         $student_id = auth()->user()->id;
         $prof_id = $prof_id;
-        $courses = Course::all();
-        $universities = University::all();
+        $professor = professors::find($prof_id);
+        $courses = Course::all()->where('university_id', $professor->university['id']);
 
         $data=[
             'courses' => $courses,
             'student_id' => $student_id,
             'prof_id' => $prof_id,
-            'universities' => $universities,
+            'professor' => $professor,
         ];
         return view('ratings.create')->with($data);
     }
@@ -68,6 +68,22 @@ class RatingsController extends Controller
     public function store(Request $request)
     {
         //
+            $this->validate($request, [
+            'prof_id' => 'required',
+            'student_id' => 'required',
+            'course_id' => 'required',
+            'rating' => 'required',
+            'comment' => 'required',
+        ]);
+        // Create Rating
+        $rating = new ratings;
+        $rating->student_id = $request->input('student_id');
+        $rating->prof_id = $request->input('prof_id');
+        $rating->course_id = $request->input('course_id');
+        $rating->rating = $request->input('rating');
+        $rating->comment = $request->input('comment');
+        $rating->save();
+        return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Rating added');
         
     }
 

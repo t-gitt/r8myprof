@@ -21,6 +21,7 @@ class CreateRatingsTable extends Migration
             $table->integer('rating');
             $table->text('comment');
             $table->timestamps();
+            $table->unique(['student_id', 'prof_id', 'course_id']); 
           });
 
           Schema::enableForeignKeyConstraints();

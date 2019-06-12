@@ -15,7 +15,7 @@
 		{{Form::label('university', 'University')}}
 		<div class="row">
 			<div class="col">
-		 <select name="university"class="form-control">
+		 <select name="university_id"class="form-control">
 		 	<option value="">Select a university</option>
 @foreach($universities as $university)
 	      <option value="{{$university->id}}">{{$university->abrv}} - {{$university->name}}  </option>
@@ -23,11 +23,11 @@
 	    </select>	
 			</div>
 			<div class="col-3">
-				<p>Your university is not on the list?</p>
+				<p>Is your university not on the list?</p>
 			</div>
 			<div class="col">
 			<!-- Button to Open the Modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
 			  Add a new university!
 			</button>
 				@include('universities.modal.create')
@@ -44,15 +44,10 @@
 
 	</div>
 		<br>
-		@if(env('GOOGLE_RECAPTCHA_KEY'))
-     <div class="g-recaptcha"
-          data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
-     </div>
-		@endif
-		<br>
 		
 	{{Form::submit('Add', ['class'=> 'btn btn-primary'])}}
 
 {!! Form::close( ) !!}
+</div>
 
 @endsection

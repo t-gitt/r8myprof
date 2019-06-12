@@ -14,37 +14,24 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-      </div>
 <hr>
 
 {!! Form::open(['action' => 'CoursesController@store', 'method' => 'POST']) !!}
 
 	<div class="form-group container">
 
-		{{Form::label('courseInfo', 'Course Info')}}
+		<h3>{{Form::label('courseInfo', 'Course Info')}}</h3>
+		<br>
 
 		{{Form::label('university', 'University')}}
 		<div class="row">
 			<div class="col">
-		 <select name="university"class="form-control">
-		 	<option value="">Select a university</option>
-@foreach($universities as $university)
-	      <option value="{{$university->id}}">{{$university->abrv}} - {{$university->name}}  </option>
-		@endforeach
-	    </select>	
-			</div>
-			<div class="col-3">
-				<p>Your university is not on the list?</p>
-			</div>
-			<div class="col">
-				<a href="/university/create" class="btn btn-primary">
-			  Add a new university!
-				</a>
+				<p>{{$professor->university['name']}}</p>
 			</div>
 		</div>
 <br>
 	<div class="row">
-		<div class="col-2">
+		<div class="col-4">
 		{{Form::text('code','', ['class' => 'form-control', 'placeholder' => 'Course Code'])}}
 		</div>
 		<div class="col">
@@ -53,24 +40,21 @@
 
 	</div>
 		<br>
-		@if(env('GOOGLE_RECAPTCHA_KEY'))
-     <div class="g-recaptcha"
-          data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
-     </div>
-		@endif
-		<br>
+		<input type="hidden" value="{{$professor->university['id']}}" name="university_id">
 		
 	{{Form::submit('Add', ['class'=> 'btn btn-primary'])}}
 
+      </div>
 {!! Form::close( ) !!}
+    </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
 
-    </div>
   </div>
 </div>
 </div>
+
 

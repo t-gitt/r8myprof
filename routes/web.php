@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('ratings', 'RatingsController');
-Route::get('professor/{id}/rating/create', 'RatingsController@create');
+Route::get('/rating/create/{id}', 'RatingsController@create');
 Route::resource('courses', 'CoursesController');
 Route::resource('university', 'UniversitiesController');
 

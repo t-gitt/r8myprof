@@ -13,14 +13,21 @@
 @if(count($professors) > 0)
 	@foreach($professors as $professor)
 		<div class="well">
-			<h3>{{$professor->titles . ' ' . $professor->f_name . ' '. $professor->l_name}}</a></h3>
-			<small>{{$professor->university_id}}</small>
-			<a href="professor/{{$professor->id}}/rating/create" class="btn btn-primary">Rate</a>
+			<div class="row">
+			<h3> <a href="professors/{{$professor->id}}">{{$professor->titles . ' ' . $professor->f_name . ' '. $professor->l_name}}</a></h3>
+			<p style="color:darkorange;"> . {{$professor->university['abrv']}}</p>
+			</div>
+			<div class="col-md-4 col-sm-4">
+				<img style="width:30%; border-radius: 50%;" src="/storage/prof_pics/{{$professor->prof_pic}}" alt="professor picture">
+			</div>
+			<br>
+			<a href="/rating/create/{{$professor->id}}" class="btn btn-primary">Rate</a>
 		</div>
+		<hr>
 	@endforeach
 @else
 	<p style="text-align:center;"> No professors found </p>
 @endif
 
-<br><hr>
-<a href="/professors/create" class="btn btn-primary">Add a professor</a>
+<br>
+<a href="/professors/create" class="btn btn-dark">Add a professor</a>

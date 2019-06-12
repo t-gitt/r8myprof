@@ -78,14 +78,34 @@ class ProfessorsController extends Controller
             'l_name' => 'required',
             'titles' => 'required',
             'university' => 'required',
-             'g-recaptcha-response' => 'required|recaptcha',
+            'prof_pic' => 'image|nullable|max:1999',
         ]);
+
+        // Handle file upload
+        if(($request)->hasFile('prof_pic')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('prof_pic')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('prof_pic')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload file
+            $path = $request->file('prof_pic')->storeAs('public/prof_pics', $fileNameToStore);
+
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+        
+
         // Create Professor
         $professor = new professors;
         $professor->titles = $request->input('titles');
         $professor->f_name = $request->input('f_name');
         $professor->l_name = $request->input('l_name');
         $professor->university_id = $request->input('university');
+        $professor->prof_pic = $fileNameToStore;
         $professor->save();
         return redirect('/professors')->with('success', 'Professor added');
     }
@@ -99,11 +119,8 @@ class ProfessorsController extends Controller
     public function show($id)
     {
         //
-        $professor = professors::where('id', $id)->get();
-        $data = [
-            'professor' => $professor,
-        ];
-        return view(professors.show)-with($data);
+        $professor = professors::find($id);
+        return view('professors.show')->with('professor', $professor);
     }
 
     /**

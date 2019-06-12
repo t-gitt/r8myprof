@@ -45,9 +45,8 @@ class UniversitiesController extends Controller
             $this->validate($request, [
             'name' => 'required',
             'abrv' => 'required',
-             'g-recaptcha-response' => 'required|recaptcha',
         ]);
-        // Create Professor
+        // Create University
         $university = new University;
         $university->name = $request->input('name');
         $university->abrv = $request->input('abrv');
