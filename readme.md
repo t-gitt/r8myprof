@@ -11,7 +11,17 @@ Students are able to:
 
 
 ## Screenshots
-> still not deployed 
+### Home Page
+![Alt text](/Screenshots/1.png?raw=true "Home Page")
+
+### Professor Page
+![Alt text](/Screenshots/2.png?raw=true "Professor Page")
+
+### Rating on Professor Page
+![Alt text](/Screenshots/3.png?raw=true "Rating Display")
+
+### Rate a Professor Page
+![Alt text](/Screenshots/4.png?raw=true "Rating")
 
 ### Inspiration
 3 years of university-induced depression lol
