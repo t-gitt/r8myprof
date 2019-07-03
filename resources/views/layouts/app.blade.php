@@ -29,7 +29,6 @@
 
 
 
-    
 .coursestar-rating {
   font-family: 'FontAwesome';
 }
@@ -202,6 +201,8 @@
   border-radius: 30%;
 
   object-fit: cover;
+}
+#app{
 }
 </style>
 <body style="background-color:white;">

@@ -40,12 +40,19 @@
 				<h2>
 				<?php
 								$ratingSum = 0;
+								$pcharacterSum = 0;
+						        $pteachingSum =0;
+						        $pmasterySum = 0;
+						        $pcharacterWAvg = 0;
+						        $pteachingWAvg = 0;
+						        $pmasteryWAvg = 0;
+						        $pmasterySum = 0;
 							foreach ($professor->ratings as $rating) {
 
         // get ratings sum
-        $pcharacterSum = $rating->sum('pcharacter_rating');
-        $pteachingSum = $rating->sum('pteaching_rating');
-        $pmasterySum = $rating->sum('pmastery_rating');
+        $pcharacterSum = $rating['pcharacter_rating'] + $pcharacterSum;
+        $pteachingSum = $rating['pteaching_rating'] + $pteachingSum;
+        $pmasterySum = $rating['pmastery_rating'] + $pmasterySum;
 
         // calculate weight average of sum (teaching = .4 | character/mastery = .3)
         $pcharacterWAvg = $pcharacterSum * 0.35;
@@ -56,6 +63,7 @@
 							}
 
 				$starNumber = $ratingSum / count($professor->ratings);
+
 
 				$output=NULL;
 				for($x=1;$x<=$starNumber;$x++) {

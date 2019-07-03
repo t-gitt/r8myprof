@@ -26,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
+
     }
 }

@@ -28,6 +28,26 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+
+                                <select class="fa form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" id="gender" >
+                                    <option value="NA">Rather not say</option>
+                                    <option value="male"><strong>&#xf222;</strong> Male</option>
+                                    <option value="female"><strong>&#xf221;</strong> Female</option>
+                                    <option value="agender"><strong>&#xf22d;</strong> Agender</option>
+                                </select>
+
+                                @if ($errors->has('gender'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">

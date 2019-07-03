@@ -99,7 +99,7 @@ class ProfessorsController extends Controller
     public function index()
     {
         //
-       $professors = professors::paginate(5);
+       $professors = professors::paginate(3);
        $ratings = ratings::all();
        $data = [
         'professors' => $professors,
@@ -195,6 +195,7 @@ class ProfessorsController extends Controller
         $professor = professors::find($id);
         $ratings = ratings::paginate(5)->where('prof_id', $id);
 
+        if(count($ratings) > 0){
         // get ratings sum
         $pcharacterSum = $ratings->sum('pcharacter_rating');
         $pteachingSum = $ratings->sum('pteaching_rating');
@@ -208,16 +209,22 @@ class ProfessorsController extends Controller
         //total weighted average sum
         $overallRating = ($pcharacterWAvg + $pteachingWAvg + $pmasteryWAvg) / count($ratings);
 
-
-
-
-
         $data = [
             'professor' => $professor,
             'ratings' => $ratings,
             'overallRating' => $overallRating,
          ];
+
         return view('professors.show')->with($data);
+        }else{
+
+        $data = [
+            'professor' => $professor,
+            'ratings' => $ratings,
+         ];
+
+        return view('professors.show')->with($data);
+        }
     }
 
     /**

@@ -10,7 +10,7 @@ Students are able to:
 > In its current state signing up requires an @.edu email account to help with moderating the website.
 
 
-##Screenshots
+## Screenshots
 > still not deployed 
 
 ### Inspiration
