@@ -20,7 +20,6 @@ class CreateProfessorsTable extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('url')->nullable();
-            $table->integer('avgrating')->nullable();
             $table->timestamps();
         });
 

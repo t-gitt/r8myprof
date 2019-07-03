@@ -47,7 +47,9 @@ class CoursesController extends Controller
     public function store(Request $request)
     {
         //
-
+        //
+        try {
+            
             $this->validate($request, [
             'university_id' => 'required',
             'code' => 'required',
@@ -59,7 +61,24 @@ class CoursesController extends Controller
         $course->code = $request->input('code');
         $course->university_id = $request->input('university_id');
         $course->save();
-        return redirect('/courses')->with('success', 'Course added');
+        $prof_id = $request->input('prof_id');
+
+
+        } catch(\Illuminate\Database\QueryException $ex){ 
+
+            if (isset($prof_id)) {
+                return redirect('/ratings/create/$prof_id')->with('success', 'This university already has a course with this code. Take a second look at your course\'s code. If you think there is a mistake');
+            } else {
+                return redirect('/professors')->with('success', 'This university already has a course with this code. Take a second look at your course\'s code. If you think there is a mistake, please contact us in the contact page.');
+            }
+        }
+            if (isset($prof_id)) {
+                return redirect('rating/create/'.$prof_id)->with('success', 'Course added');
+            } else {
+                return redirect('/professors');
+            }
+
+
     }
 
     /**

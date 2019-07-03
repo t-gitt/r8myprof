@@ -1,8 +1,9 @@
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    r<span class="" style="color:#FC5C5C;">8</span>myprof
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
    <span class="navbar-toggler-icon"></span>
@@ -15,16 +16,36 @@
                     </ul>
 
         <ul class="navbar-nav mr-auto">
+
           <li class="nav-item active">
             <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/transactions" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Professors</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="/professors">Find a professor</a>
-            <a class="dropdown-item" href="/professors/create">Add a professor</a>
-          </div>
-        </li> 
+          <li class="nav-item active">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/professors">Professors <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/contact">Contact <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/faq">Faq <span class="sr-only">(current)</span></a>
+          </li>
+          <br>
+        </ul>
+        <ul class="navbar-nav mr-auto" style="padding-top: 8px;">
+    <div class="col-14" >
+          <li class="nav-item " style="text-align:right ;">
+            <form action="/search" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="">
+                    <input type="text" class="form-control" name="query"
+                        placeholder="Search for a professor"> 
+                            </div>
+            </form>
+        </li>
+    </div>
         </ul>
 
                     <!-- Right Side Of Navbar -->

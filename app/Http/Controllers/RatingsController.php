@@ -17,6 +17,7 @@ class RatingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function userRatings()
     {
         //
@@ -45,18 +46,25 @@ class RatingsController extends Controller
     public function create($prof_id)
     {
         //
-        $student_id = auth()->user()->id;
-        $prof_id = $prof_id;
-        $professor = professors::find($prof_id);
-        $courses = Course::all()->where('university_id', $professor->university['id']);
+    if(Auth::check()){
+        $rating = ratings::all()->where('prof_id', $prof_id)->where('student_id', Auth::id());
+        if(count($rating) == 0){
+            $student_id = auth()->user()->id;
+            $prof_id = $prof_id;
+            $professor = professors::find($prof_id);
+            $courses = Course::all()->where('university_id', $professor->university['id']);
 
-        $data=[
-            'courses' => $courses,
-            'student_id' => $student_id,
-            'prof_id' => $prof_id,
-            'professor' => $professor,
-        ];
-        return view('ratings.create')->with($data);
+            $data=[
+                'courses' => $courses,
+                'student_id' => $student_id,
+                'prof_id' => $prof_id,
+                'professor' => $professor,
+            ];
+            return view('ratings.create')->with($data);
+        } else{
+            return redirect('/professors/'.$prof_id)->with('success', 'You already have rated this professor.')->with('rating', $rating);
+        }
+    }  
     }
 
     /**
@@ -68,11 +76,15 @@ class RatingsController extends Controller
     public function store(Request $request)
     {
         //
+        try { 
             $this->validate($request, [
             'prof_id' => 'required',
             'student_id' => 'required',
             'course_id' => 'required',
-            'rating' => 'required',
+            'course_rating' => 'required',
+            'pteaching_rating' => 'required',
+            'pcharacter_rating' => 'required',
+            'pmastery_rating' => 'required',
             'comment' => 'required',
         ]);
         // Create Rating
@@ -80,10 +92,17 @@ class RatingsController extends Controller
         $rating->student_id = $request->input('student_id');
         $rating->prof_id = $request->input('prof_id');
         $rating->course_id = $request->input('course_id');
-        $rating->rating = $request->input('rating');
+        $rating->course_rating = $request->input('course_rating');
+        $rating->pteaching_rating = $request->input('pteaching_rating');
+        $rating->pcharacter_rating = $request->input('pcharacter_rating');
+        $rating->pmastery_rating = $request->input('pmastery_rating');
         $rating->comment = $request->input('comment');
         $rating->save();
         return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Rating added');
+} catch(\Illuminate\Database\QueryException $ex){ 
+
+        return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Most likely you have already rated this professor. If you didn\'t, please contact us at r8myprof@gmail.com to help u solve this issue.');
+}
         
     }
 
@@ -130,5 +149,8 @@ class RatingsController extends Controller
     public function destroy($id)
     {
         //
+        $rating = ratings::find($id);
+        $rating->delete();
+        return redirect('/professors/create' . $rating->professors['id'])->with('success', 'Rating deleted');
     }
 }

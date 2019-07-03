@@ -86,21 +86,25 @@ section .section-title {
         <div class="col-xs-12 col-sm-4 col-md-4">
           <h5>Quick links</h5>
           <ul class="list-unstyled quick-links">
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-            <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+            <li><a href="/"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="/about"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="/professors"><i class="fa fa-angle-double-right"></i>Professors</a></li>
+            <li><a href="/faq"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="/privacy"><i class="fa fa-angle-double-right"></i>Privacy Policy</a></li>
           </ul>
+        </div>
+        <div class="col">
+          <h1 style="color:white; text-align: center;">r<span class="" style="color:#FC5C5C;">8</span>myprof</h1>
+          <div class="container">
+          <p style="text-align:justify;color:white;">The developers of r8myprof have created this platform with <strong>your</strong> privacy in mind.  We believe in <a href="http://www.tristanharris.com/2016/05/how-technology-hijacks-peoples-minds - from-a-magician-and-googles-design-ethicist/" style="color:#fc5c5c">ethical software design</a>, where <strong>you</strong> -the user- are able to perform each function with as few steps as possible. And of course, we will make sure to keep this platform ads-free to prevent trackers, data leakage, and online visual pollution.</p>
+          <p style="text-align:justify;color:white;">
+            We encourage users to be involved in the development process. Click <a href="/faq#faqHelp" style="color:#fc5c5c">here</a> to know how you can!</p>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
           <ul class="list-unstyled list-inline social text-center">
-            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
             <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
           </ul>
         </div>

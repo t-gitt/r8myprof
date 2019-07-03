@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \App\Course;
 
 class ratings extends Model
 {
@@ -23,6 +24,9 @@ class ratings extends Model
 
       public function professors(){
       	return $this->belongsTo('App\professors', 'prof_id');
+      }
+      public function course(){
+        return $this->belongsTo('App\Course', 'course_id');
       }
 
 }

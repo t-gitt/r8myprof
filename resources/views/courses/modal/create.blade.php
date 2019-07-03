@@ -41,6 +41,7 @@
 	</div>
 		<br>
 		<input type="hidden" value="{{$professor->university['id']}}" name="university_id">
+		<input type="hidden" value="{{$professor->id}}" name="prof_id">
 		
 	{{Form::submit('Add', ['class'=> 'btn btn-primary'])}}
 

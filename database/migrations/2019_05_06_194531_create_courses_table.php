@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedbiginteger('university_id')->unsigned()->nullable();
             $table->string('code');
             $table->string('name');
+            $table->unique(['university_id', 'code']); 
             $table->timestamps();
         });
 

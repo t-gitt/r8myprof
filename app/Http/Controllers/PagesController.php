@@ -11,15 +11,22 @@ class PagesController extends Controller
 {
     //
     public function home(){
-    	$user_id = 1;
-    	$rating = new ratings();
+        $ratings = ratings::all();
 
-        $professors = professors::all();
-    	$userRatings= $rating->getUserRatings($user_id);
+        $professors = professors::paginate(5);
     	$data = [
-    		'userRatings' => $userRatings,
     		'professors' => $professors,
+            'ratings' => $ratings,
     	];
     	return view('home')->with($data);
+    }
+    public function about(){
+        return view('about');
+    }
+    public function privacy(){
+        return view('privacy');
+    }
+    public function faq(){
+        return view('faq');
     }
 }

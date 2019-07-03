@@ -17,6 +17,7 @@ class CreateUniversitiesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('abrv');
+            $table->string('country');
             $table->timestamps();
         });
     }

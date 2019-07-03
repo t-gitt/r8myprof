@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \App\professors;
 use \App\University;
 use \App\Course;
+use \App\ratings;
 
 class ProfessorsController extends Controller
 {
@@ -30,7 +32,66 @@ class ProfessorsController extends Controller
         return view('professors.list')->with($data);
 
     }
+    public function filter(Request $request){
+        $filter = $request->input('filter');
+        $keyword = trim($request->input('keyword'));
 
+        if ($filter == 'university') {
+            $universities = University::query()
+            ->where('abrv', 'LIKE', "%{$keyword}%")
+            ->orwhere('name', 'LIKE', "%{$keyword}%")->pluck('id')->toArray();;
+            if (!empty($universities)) {
+                foreach ($universities as $university) {
+                $professors = professors::query()->orwhere('university_id', 'LIKE', "%{$university}%");
+                }
+                $professors = $professors->paginate(10);
+                  $data = [
+                    'professors' => $professors,
+                    'keyword' => $keyword,
+                ]; 
+                return view('professors.list')->with($data);
+            } else {
+                  $data = [
+                    'professors' => [],
+                    'keyword' => $keyword,
+                ]; 
+                return view('professors.list')->with($data);
+            }
+
+        } elseif ($filter == 'professor') {
+            $professors = professors::query()
+            ->where('f_name', 'LIKE', "%{$keyword}%")
+            ->orwhere('l_name','LIKE', "%{$keyword}%")->paginate(10);
+              $data = [
+                'professors' => $professors,
+                'keyword' => $keyword,
+            ]; 
+            return view('professors.list')->with($data);
+
+        } elseif ($filter == 'country') {
+            $universities = University::query()
+            ->where('country', 'LIKE', "%{$keyword}%")->pluck('id')->toArray();;
+            if (!empty($universities)) {
+                foreach ($universities as $university) {
+                $professors = professors::query()->orwhere('university_id', 'LIKE', "%{$university}%");
+                }
+                $professors = $professors->paginate(10);
+                  $data = [
+                    'professors' => $professors,
+                    'keyword' => $keyword,
+                ]; 
+                return view('professors.list')->with($data);
+            } else {
+                  $data = [
+                    'professors' => [],
+                    'keyword' => $keyword,
+                ]; 
+                return view('professors.list')->with($data);
+            }
+        } 
+
+
+    }
 
     public function list(){
 
@@ -38,8 +99,13 @@ class ProfessorsController extends Controller
     public function index()
     {
         //
-       $professors = professors::all();
-       return view('professors.list')->with('professors', $professors);
+       $professors = professors::paginate(5);
+       $ratings = ratings::all();
+       $data = [
+        'professors' => $professors,
+        'ratings' => $ratings,
+        ];
+       return view('professors.list')->with($data);
 
     }
 
@@ -51,15 +117,21 @@ class ProfessorsController extends Controller
     public function create()
     {
         //
-       $professors = professors::all();
-       $universities = University::all();
-       $courses = Course::all();
-      $data = [
-            'professors' => $professors,
-            'universities' => $universities,
-            'courses' => $courses,
-        ]; 
-       return view('professors.add')->with($data);
+        if (Auth::check()) {
+            if (Auth::user()->email_verified_at != NULL) {
+               $professors = professors::all();
+               $universities = University::all();
+               $courses = Course::all();
+              $data = [
+                    'professors' => $professors,
+                    'universities' => $universities,
+                    'courses' => $courses,
+                ]; 
+               return view('professors.add')->with($data);
+            }
+           return redirect('/email/verify');
+        }
+       return redirect('/login')->with('success', 'You need to login to add a new professor');
 
 
     }
@@ -104,6 +176,7 @@ class ProfessorsController extends Controller
         $professor->titles = $request->input('titles');
         $professor->f_name = $request->input('f_name');
         $professor->l_name = $request->input('l_name');
+        $professor->url = $request->input('url');
         $professor->university_id = $request->input('university');
         $professor->prof_pic = $fileNameToStore;
         $professor->save();
@@ -120,7 +193,31 @@ class ProfessorsController extends Controller
     {
         //
         $professor = professors::find($id);
-        return view('professors.show')->with('professor', $professor);
+        $ratings = ratings::paginate(5)->where('prof_id', $id);
+
+        // get ratings sum
+        $pcharacterSum = $ratings->sum('pcharacter_rating');
+        $pteachingSum = $ratings->sum('pteaching_rating');
+        $pmasterySum = $ratings->sum('pmastery_rating');
+
+        // calculate weight average of sum (teaching = .4 | character/mastery = .3)
+        $pcharacterWAvg = $pcharacterSum * 0.35;
+        $pteachingWAvg = $pteachingSum * 0.4;
+        $pmasteryWAvg = $pmasterySum * 0.25;
+
+        //total weighted average sum
+        $overallRating = ($pcharacterWAvg + $pteachingWAvg + $pmasteryWAvg) / count($ratings);
+
+
+
+
+
+        $data = [
+            'professor' => $professor,
+            'ratings' => $ratings,
+            'overallRating' => $overallRating,
+         ];
+        return view('professors.show')->with($data);
     }
 
     /**

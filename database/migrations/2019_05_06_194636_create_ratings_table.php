@@ -18,7 +18,10 @@ class CreateRatingsTable extends Migration
             $table->unsignedbiginteger('student_id')->unsigned()->nullable();
             $table->unsignedbiginteger('prof_id')->unsigned()->nullable();
             $table->unsignedbiginteger('course_id')->unsigned()->nullable();
-            $table->integer('rating');
+            $table->integer('course_rating');
+            $table->integer('pcharacter_rating');
+            $table->integer('pteaching_rating');
+            $table->integer('pmastery_rating');
             $table->text('comment');
             $table->timestamps();
             $table->unique(['student_id', 'prof_id', 'course_id']); 

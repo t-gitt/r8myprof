@@ -4,18 +4,47 @@
 @include('inc.navbar')
 @section('content')
 
-<h1>Add a new professor</h1>
-<hr>
 {!! Form::open(['action' => 'RatingsController@store', 'method' => 'POST']) !!}
 
 	<div class="form-group">
 
+<div class="container" id="courseRating">
+	
+<h2>Course</h2>
+<hr>
 	<div class="row">
 		<div class="col">
-		{{Form::label('rating', 'Rating')}}
-		<input type="number" name="rating" max="5" min="1" placeholder="0"> <strong style="color:green;">out of 5.0</strong>
+		{{Form::label('course_rating', 'Course Rating')}}
+			@include('inc.courseStars')
 		</div>
 	</div>
+</div>
+
+	<br>
+
+<div class="container" id="professorRating">
+<h2>Professor</h2>
+<hr>
+
+	<div class="row">
+		<div class="col">
+		{{Form::label('pcharacter_rating', 'Professor\'s Character')}}
+		@include('inc.pcharacterStars')
+		</div>
+		<div class="col">
+		{{Form::label('pteaching_rating', 'Professor\'s Teaching skills')}}
+		@include('inc.pteachingStars')
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col">
+		{{Form::label('pmastery_rating', 'Professor\'s Mastery of the course ')}}
+		@include('inc.pmasteryStars')
+		</div>
+	</div>
+</div>
+
 		<br>
 		{{Form::label('course', 'Course')}}
 	<div class="row">
