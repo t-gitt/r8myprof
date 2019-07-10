@@ -15,38 +15,18 @@
 	<div class="row">
 		<div class="col">
 		{{Form::label('course_rating', 'Course Rating')}}
+		<div class="col-12">
+			
+		<small style="color:grey;">How would you rate this course in general?</small>
 			@include('inc.courseStars')
 		</div>
-	</div>
-</div>
-
-	<br>
-
-<div class="container" id="professorRating">
-<h2>Professor</h2>
-<hr>
-
-	<div class="row">
-		<div class="col">
-		{{Form::label('pcharacter_rating', 'Professor\'s Character')}}
-		@include('inc.pcharacterStars')
-		</div>
-		<div class="col">
-		{{Form::label('pteaching_rating', 'Professor\'s Teaching skills')}}
-		@include('inc.pteachingStars')
 		</div>
 	</div>
 	<br>
-	<div class="row">
-		<div class="col">
-		{{Form::label('pmastery_rating', 'Professor\'s Mastery of the course ')}}
-		@include('inc.pmasteryStars')
-		</div>
-	</div>
-</div>
 
-		<br>
-		{{Form::label('course', 'Course')}}
+	<div class="row">
+<div class="col">
+		{{Form::label('course', 'Course Name')}}
 	<div class="row">
 			<div class="col">
 				@if(count($courses) > 0)
@@ -68,6 +48,50 @@
 			</div>
 	</div>
 <br>
+</div>
+	</div>
+</div>
+
+	<br>
+
+<div class="container" id="professorRating">
+<h2>Professor</h2>
+<hr>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<strong>
+				{{Form::label('pcharacter_rating', 'Professor\'s Character')}}
+			</strong>
+
+		<div class="col-sm-12">
+			<small style="grey">Professional interactions with students within and byond the classroam. Along with creating a supportive environement for the students.</small>
+		@include('inc.pcharacterStars')
+		</div>
+		</div>
+		<div class="col-sm-12">
+			<strong>
+				{{Form::label('pteaching_rating', 'Professor\'s Teaching skills')}}
+			</strong>
+		<div class="col-sm-12">
+			<small style="grey">Uses modern and creative teaching methods to further explain the subject's ideas and concepts.</small>
+			@include('inc.pteachingStars')
+		</div>
+		</div>
+		<div class="col-sm-12">
+			<strong>
+				{{Form::label('pmastery_rating', 'Professor\'s Mastery of the course ')}}
+			</strong>
+		<div class="col-sm-12">
+			<small style="grey">Knowledge and enthusiasm for the subject matter.</small>
+			@include('inc.pmasteryStars')
+		</div>
+		</div>
+	</div>
+	<br>
+</div>
+
+		<br>
 		
 		{{Form::label('comment', 'Comment')}}
 		{{Form::textarea('comment','', ['class' => 'form-control', 'placeholder' => 'Comment'])}}

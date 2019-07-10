@@ -45,11 +45,13 @@ class UniversitiesController extends Controller
             $this->validate($request, [
             'name' => 'required',
             'abrv' => 'required',
+            'url' => 'required',
             'country' => 'required',
         ]);
         // Create University
         $university = new University;
         $university->name = $request->input('name');
+        $university->url = $request->input('url');
         $university->abrv = $request->input('abrv');
         $university->country = $request->input('country');
         $university->save();

@@ -151,6 +151,6 @@ class RatingsController extends Controller
         //
         $rating = ratings::find($id);
         $rating->delete();
-        return redirect('/professors/create' . $rating->professors['id'])->with('success', 'Rating deleted');
+        return redirect('/professors/' . $rating->professors['id'])->with('success', 'Rating deleted');
     }
 }

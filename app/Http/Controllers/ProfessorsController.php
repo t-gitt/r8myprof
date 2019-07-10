@@ -21,88 +21,58 @@ class ProfessorsController extends Controller
     public function search(Request $request){
 
         $searchTerm = $request->input('query');
-
+        $universities = University::all();
         $professors = professors::query()
         ->where('f_name', 'LIKE', "%{$searchTerm}%")
-        ->orwhere('l_name','LIKE', "%{$searchTerm}%")->get();
+        ->orwhere('l_name','LIKE', "%{$searchTerm}%")->paginate(5);
           $data = [
             'professors' => $professors,
+            'universities' => $universities,
             'searchTerm' => $searchTerm,
         ]; 
         return view('professors.list')->with($data);
 
     }
+
+
     public function filter(Request $request){
-        $filter = $request->input('filter');
-        $keyword = trim($request->input('keyword'));
 
-        if ($filter == 'university') {
-            $universities = University::query()
-            ->where('abrv', 'LIKE', "%{$keyword}%")
-            ->orwhere('name', 'LIKE', "%{$keyword}%")->pluck('id')->toArray();;
-            if (!empty($universities)) {
-                foreach ($universities as $university) {
-                $professors = professors::query()->orwhere('university_id', 'LIKE', "%{$university}%");
-                }
-                $professors = $professors->paginate(10);
-                  $data = [
-                    'professors' => $professors,
-                    'keyword' => $keyword,
-                ]; 
-                return view('professors.list')->with($data);
-            } else {
-                  $data = [
-                    'professors' => [],
-                    'keyword' => $keyword,
-                ]; 
-                return view('professors.list')->with($data);
-            }
-
-        } elseif ($filter == 'professor') {
+        $university = $request->input('university');
+        $prof = $request->input('professor');
+        $universities = University::all();
+        if ($university == 'all') {
             $professors = professors::query()
-            ->where('f_name', 'LIKE', "%{$keyword}%")
-            ->orwhere('l_name','LIKE', "%{$keyword}%")->paginate(10);
+            ->where('f_name', 'LIKE', "%{$prof}%")
+            ->orwhere('l_name','LIKE', "%{$prof}%")->paginate(5);
               $data = [
                 'professors' => $professors,
-                'keyword' => $keyword,
+                'universities' => $universities,
+                'prof' => $prof,
+            ]; 
+            return view('professors.list')->with($data);
+        }else{
+            $professors = professors::query()->where('university_id', $university)
+            ->where('f_name', 'LIKE', "%{$prof}%")
+            ->orwhere('l_name','LIKE', "%{$prof}%")->paginate(5);
+              $data = [
+                'professors' => $professors,
+                'universities' => $universities,
+                'prof' => $prof,
             ]; 
             return view('professors.list')->with($data);
 
-        } elseif ($filter == 'country') {
-            $universities = University::query()
-            ->where('country', 'LIKE', "%{$keyword}%")->pluck('id')->toArray();;
-            if (!empty($universities)) {
-                foreach ($universities as $university) {
-                $professors = professors::query()->orwhere('university_id', 'LIKE', "%{$university}%");
-                }
-                $professors = $professors->paginate(10);
-                  $data = [
-                    'professors' => $professors,
-                    'keyword' => $keyword,
-                ]; 
-                return view('professors.list')->with($data);
-            } else {
-                  $data = [
-                    'professors' => [],
-                    'keyword' => $keyword,
-                ]; 
-                return view('professors.list')->with($data);
             }
-        } 
-
-
     }
 
-    public function list(){
-
-    }
     public function index()
     {
         //
        $professors = professors::paginate(3);
        $ratings = ratings::all();
+       $universities = University::all();
        $data = [
         'professors' => $professors,
+        'universities' => $universities,
         'ratings' => $ratings,
         ];
        return view('professors.list')->with($data);
@@ -149,6 +119,7 @@ class ProfessorsController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'titles' => 'required',
+            'faculty' => 'required',
             'university' => 'required',
             'prof_pic' => 'image|nullable|max:1999',
         ]);
@@ -176,6 +147,7 @@ class ProfessorsController extends Controller
         $professor->titles = $request->input('titles');
         $professor->f_name = $request->input('f_name');
         $professor->l_name = $request->input('l_name');
+        $professor->faculty = $request->input('faculty');
         $professor->url = $request->input('url');
         $professor->university_id = $request->input('university');
         $professor->prof_pic = $fileNameToStore;

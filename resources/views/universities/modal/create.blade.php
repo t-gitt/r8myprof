@@ -13,24 +13,33 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-<hr>
 {!! Form::open(['action' => 'UniversitiesController@store', 'method' => 'POST']) !!}
 
 	<div class="container form-group">
-
-		{{Form::label('name', 'University')}}
+<h3>University</h3>
+<hr>
 	<div class="row">
 		<div class="col">
+    {{Form::label('abrv', 'Abbreviation')}}
 		{{Form::text('abrv','', ['class' => 'form-control', 'placeholder' => 'Abbreviation <UTS>'])}}
 		</div>
 		<div class="col">
+    {{Form::label('name', 'University\'s Name')}}
 		{{Form::text('name','', ['class' => 'form-control', 'placeholder' => 'University\'s Name'])}}
 		</div>
 	</div>
+  <br>
+  <div class="row">
+    <div class="col">
+      {{Form::label('url', 'University\'s URL')}}
+      {{Form::text('url','', ['class' => 'form-control', 'placeholder' => 'https://www.university.edu.com'])}}
+    </div>
+  </div>
 
 <br>
   <div class="row">
     <div class="col">
+      {{Form::label('country', 'University\'s Country')}}
  <select id="country" name="country" class="form-control">
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>

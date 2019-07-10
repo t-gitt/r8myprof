@@ -21,6 +21,9 @@
     <script src="https://code.jquery.com/jquery-3.3.0.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+
+
     <!-- Fonts -->
 
 </head>
@@ -38,7 +41,7 @@
 }
 .coursestar-rating > fieldset:not(:checked) > input {
   position: absolute;
-  top: -9999px;
+  t/op: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 .coursestar-rating > fieldset:not(:checked) > label {
@@ -67,7 +70,7 @@
 }
 .coursestar-rating > fieldset > label:active {
   position: relative;
-  top: 2px;
+  t/op: 2px;
 }
 .pteachingstar-rating {
   font-family: 'FontAwesome';
@@ -78,7 +81,7 @@
 }
 .pteachingstar-rating > fieldset:not(:checked) > input {
   position: absolute;
-  top: -9999px;
+  t/op: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 .pteachingstar-rating > fieldset:not(:checked) > label {
@@ -107,7 +110,7 @@
 }
 .pteachingstar-rating > fieldset > label:active {
   position: relative;
-  top: 2px;
+  t/op: 2px;
 }
 .pmasterystar-rating {
   font-family: 'FontAwesome';
@@ -118,7 +121,7 @@
 }
 .pmasterystar-rating > fieldset:not(:checked) > input {
   position: absolute;
-  top: -9999px;
+  t/op: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 .pmasterystar-rating > fieldset:not(:checked) > label {
@@ -147,7 +150,7 @@
 }
 .pmasterystar-rating > fieldset > label:active {
   position: relative;
-  top: 2px;
+  t/op: 2px;
 }
 .pcharacterstar-rating {
   font-family: 'FontAwesome';
@@ -158,7 +161,7 @@
 }
 .pcharacterstar-rating > fieldset:not(:checked) > input {
   position: absolute;
-  top: -9999px;
+  t/op: -9999px;
   clip: rect(0, 0, 0, 0);
 }
 .pcharacterstar-rating > fieldset:not(:checked) > label {
@@ -187,7 +190,7 @@
 }
 .pcharacterstar-rating > fieldset > label:active {
   position: relative;
-  top: 2px;
+  t/op: 2px;
 }
 
 

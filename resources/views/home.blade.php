@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="border-style:hidden;">
-                <div style="border-style:hidden;"class="card-header"><h3 style="text-align:center">Welcome to r<span class="" style="color:#FC5C5C;">8</span>myprof!</h3>
+                <div style="border-style:hidden;"class=""><h1 style="text-align:center">Welcome to r<span class="" style="color:#FC5C5C;">8</span>myprof!</h1>
                 </div>
 
                 <div style="text-align:center; border-style:hidden;"class="card-body">
@@ -17,8 +17,8 @@
                         </div>
                     @endif
 
-                    <a href="/professors" class="btn btn-dark">Find a professor</a>
-                    <a href="/professors/create" class="btn btn-dark">Add a professor</a>
+                    <a href="/professors" class="btn btn-outline-dark">Find a professor</a>
+                    <a href="/professors/create" class="btn btn-outline-dark">Add a professor</a>
                     <br>
                     <br>
 

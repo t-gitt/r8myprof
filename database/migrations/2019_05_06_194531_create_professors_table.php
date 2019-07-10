@@ -19,6 +19,7 @@ class CreateProfessorsTable extends Migration
             $table->string('titles');
             $table->string('f_name');
             $table->string('l_name');
+            $table->string('faculty');
             $table->string('url')->nullable();
             $table->timestamps();
         });

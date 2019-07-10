@@ -27,13 +27,21 @@
 		</div>
 	</div>
 		<br>
+
+		<div class="row">
+			<div class="col">
+				{{Form::label('faculty', 'Faculty*')}}
+				{{Form::text('faculty','', ['class' => 'form-control', 'placeholder' => 'Faculty'])}}
+			</div>
+		</div>
 		
+		<br>
 		{{Form::label('university', 'University*')}}
 		<div class="row">
 			<div class="col">
 		 <select name="university"class="form-control">
 		 	<option value="">Select a university</option>
-@foreach($universities as $university)
+		@foreach($universities as $university)
 	      <option value="{{$university->id}}">{{$university->abrv}} - {{$university->name}}  </option>
 		@endforeach
 	    </select>	
@@ -52,7 +60,7 @@
 
 
 		{{Form::label('url', 'URL')}}
-		{{Form::text('url','', ['class' => 'form-control', 'placeholder' => 'URL'])}}
+		{{Form::text('url','', ['class' => 'form-control', 'placeholder' => 'URL (optional)'])}}
 
 <br>
 	<div class="row">

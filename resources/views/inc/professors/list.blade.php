@@ -1,18 +1,24 @@
 
+
+<div class="container">
+
 <h1>Professors</h1>
+
+
 <form action="/filter" method="POST" role="search">
     {{ csrf_field() }}
-    <div class="input-group">
-        <input type="text" class="form-control" name="keyword"
-            placeholder="Search in"> 
-		 <select name="filter"class="form-control">
-		 	<option value="professor">Professors</option>
-	        <option value="university">Universities</option>
-	        <option value="country">Countries</option>
-	    </select>	
-                </div>
-</form>
-<div class="container">
+        <div class="row input-group">
+                <input name="professor"type="text"class="form-control"placeholder="Professor's Name">
+                <select name="university" id="university" class="form-control">
+                    <option value="all">All Univeristies</option>
+                        @if(count($universities) > 0)
+                            @foreach($universities as $university)
+                                <option value="{{$university->id}}">{{$university->name}}</option>
+                            @endforeach
+                        @endif
+                </select>
+        </div>
+    </form>
 
 @if(count($professors) > 0)
 	@foreach($professors as $professor)
@@ -32,7 +38,7 @@
 
 
 
-			<p style="color:grey;">&nbsp; <strong>{{$professor->university['abrv'] . ', ' . $professor->university['country']}}</strong></p>
+			<p style="color:grey;">&nbsp; <strong><a style="color:grey;"href="{{$professor->university['url']}}">{{$professor->university['abrv'] . ', '}}</a> {{ $professor->university['country']}}</strong></p>
 		</div>
 			<div class="row">
 				@if(count($professor->ratings) > 0)
@@ -94,13 +100,15 @@
 				@else
 				<p>ratings N/A</p>
 				@endif
-			<div style="text-align:right;"class="col">
+			<div class="row col-12">
+			<div style="padding-left: 0 !important;"class="col-6">
+				<p style="margin-top:8px;"><a style="color:grey; text-decoration: underline;"href="/professors/{{$professor->id}}">Read what students think!</a></p>
+			</div>
+			<div style="text-align:right;"class="col-6">
 				<a href="/rating/create/{{$professor->id}}" style="color:white;"class="btn btn-dark">Rate</a>
 			</div>
-			</div>
-			<div class="row">
-				<p style="margin-top:8px;"><a style="color:grey; text-decoration: underline;"href="/professors/{{$professor->id}}">Read what students think!</a></p>
 				
+			</div>
 			</div>
 		</div>
 			</div>
@@ -117,3 +125,22 @@
 <a href="/professors/create" class="btn btn-dark">Add a professor</a>
 </div>
 </div>
+
+
+
+
+
+<!--
+<form action="/filter" method="POST" role="search">
+    {{ csrf_field() }}
+    <div class="input-group">
+        <input type="text" class="form-control" name="keyword"
+            placeholder="Search for"> 
+		 <select name="filter"class="form-control">
+		 	<option value="professor">Professors</option>
+	        <option value="university">Universities</option>
+	        <option value="country">Countries</option>
+	    </select>	
+                </div>
+</form>
+-->

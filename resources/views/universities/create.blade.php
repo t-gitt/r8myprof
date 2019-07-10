@@ -19,6 +19,12 @@
 		{{Form::text('name','', ['class' => 'form-control', 'placeholder' => 'Name'])}}
 		</div>
 	</div>
+  <br>
+  <div class="row">
+  	<div class="col">
+	    {{Form::text('url','', ['class' => 'form-control', 'placeholder' => 'University\'s URL'])}}
+	</div>
+  </div>
 	
 	<br>
   <div class="row">

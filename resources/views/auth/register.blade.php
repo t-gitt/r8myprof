@@ -32,11 +32,12 @@
 
                             <div class="col-md-6">
 
-                                <select class="fa form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" id="gender" >
+                                <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" id="gender" >
                                     <option value="NA">Rather not say</option>
-                                    <option value="male"><strong>&#xf222;</strong> Male</option>
-                                    <option value="female"><strong>&#xf221;</strong> Female</option>
-                                    <option value="agender"><strong>&#xf22d;</strong> Agender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="non-binary">Non-binary</option>
+                                    <option value="other"> Other</option>
                                 </select>
 
                                 @if ($errors->has('gender'))
@@ -51,6 +52,8 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
+                                
+                            <small style="color:grey;">Sign up using an @edu email account</small>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @if ($errors->has('email'))
