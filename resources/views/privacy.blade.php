@@ -27,7 +27,7 @@
 <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</p>
 
 <ul>
-<li>Email address</li><li>First name and last name</li><li>Cookies and Usage Data</li>
+<li>Email address</li><li>First name and last name</li><li>Gender</li><li>Cookies and Usage Data</li>
 </ul>
 
 <h4>Usage Data</h4>
@@ -94,7 +94,7 @@
 <p>If you have any questions about this Privacy Policy, please contact us:</p>
 <ul>
         <li>By email: r8myprof@gmail.com</li>
-            <li>By visiting this page on our website: http://www.r8myprof.com/contact</li>
+        
       
         </ul>
 @endsection

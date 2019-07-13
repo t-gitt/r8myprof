@@ -35,10 +35,14 @@
 		</div>
 <br>
 	<div class="row">
-		<div class="col-2">
+		<div class="col-12 col-lg-4">
+			<br>
+		{{Form::label('code', 'Course Code*')}}
 		{{Form::text('code','', ['class' => 'form-control', 'placeholder' => 'Course Code'])}}
 		</div>
-		<div class="col">
+		<div class="col-12 col-lg-4">
+			<br>
+		{{Form::label('name', 'Course Name*')}}
 		{{Form::text('name','', ['class' => 'form-control', 'placeholder' => 'Course Name'])}}
 		</div>
 

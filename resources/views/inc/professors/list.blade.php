@@ -2,23 +2,33 @@
 
 <div class="container">
 
-<h1>Professors</h1>
+		<div class="row" style="margin-bottom:10px;">
+			<h1>Professors</h1>
+		</div>
 
 
-<form action="/filter" method="POST" role="search">
-    {{ csrf_field() }}
-        <div class="row input-group">
-                <input name="professor"type="text"class="form-control"placeholder="Professor's Name">
-                <select name="university" id="university" class="form-control">
-                    <option value="all">All Univeristies</option>
-                        @if(count($universities) > 0)
-                            @foreach($universities as $university)
-                                <option value="{{$university->id}}">{{$university->name}}</option>
-                            @endforeach
-                        @endif
-                </select>
-        </div>
-    </form>
+		<div class="row">
+			<form action="/filter" method="POST" role="search" style="width: 100%;">
+			    {{ csrf_field() }}
+			        <div class="input-group">
+			                <input name="professor"type="text"class="form-control"placeholder="Name">
+			                <select name="university" id="university" class="form-control">
+			                    <option value="all">All Univeristies</option>
+			                        @if(count($universities) > 0)
+			                            @foreach($universities as $university)
+			                                <option value="{{$university->id}}">{{$university->name}}</option>
+			                            @endforeach
+			                        @endif
+			                </select>
+			                <select name="sort" id="sort" class="form-control">
+			                    <option value="new">Sort by new</option>
+			                    <option value="old">Sort by old</option>
+			                </select>
+			                <button value="submit"class="col-2 form-control btn btn-dark"><span class="fa fa-search"></span></button>
+			        </div>
+
+			    </form>
+			</div>
 
 @if(count($professors) > 0)
 	@foreach($professors as $professor)

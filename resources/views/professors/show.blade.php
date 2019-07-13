@@ -70,10 +70,14 @@ echo "<a style='color:green;'>";
 					@if(count($ratings) > 0)
 				<h4>Courses:</h4>
 				<ul>
+					<?php $header = null; ?>
 					@foreach($ratings as $rating)
+						@if ($header != $rating->course['code'])
 					<li>
 					 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
 				 	</li>
+				 		<?php $header = $rating->course['code'] ?>
+					 	@endif
 					@endforeach
 				</ul>
 					@endif
@@ -89,13 +93,8 @@ echo "<a style='color:green;'>";
 		@foreach($ratings as $rating)
 	<hr >
 
-<div style="color:#181818;padding:30px;padding-bottom: 0 !important;">
-	<div>
-	<div class="row">
-	</div>
-
-	</div>
-
+</div>
+<div style="color:#181818;padding:30px;padding-bottom: 0 !important;padding-bottom: 0 !important;">
 
 <div class="row">
 		<p style=""><span class="" style="color:#FC5C5C;"><strong>{{$i}} | </strong></span>&nbsp </p>
@@ -338,25 +337,31 @@ echo "<span style='color:green;'>";
 </div>
 
 	</div>
-</div>
 
 
 
 
 
 	<div style="margin-top:10px;"class="col">
-	<div class="row">
-		<p style="text-align:justify;margin:10px;color:#181818;">{{$rating->comment}}</p>
-	</div>
+		<div class="row">
+			<p style="text-align:justify;margin:10px;color:#181818;">{{$rating->comment}}</p>
+		</div>
 
 	<div class="row">
 <div class="col">
 	@if(Auth::check())	
 	@if($rating->student_id == Auth::id())
-	{!! Form::open(['action' => ['RatingsController@destroy', $rating->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-	{{Form::hidden('_method', 'DELETE')}}
-	{{Form::submit('Delete', ['class'=>'pull-right btn btn-danger'])}}
-	{!! Form::close() !!}
+	<div class="row pull-right">
+		<div class="col">
+			<a href="/ratings/{{$rating->id}}/edit" class="btn btn-primary">Edit</a>
+		</div>
+		<div class="">
+			{!! Form::open(['action' => ['RatingsController@destroy', $rating->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+			{{Form::hidden('_method', 'DELETE')}}
+			{{Form::submit('Delete', ['class'=>'pull-right btn btn-danger'])}}
+			{!! Form::close() !!}
+		</div>
+	</div>
 	@endif
 	@endif
 	<small><span class="" style="color:#FC5C5C;"><strong>{{$rating->created_at}}</strong></span></small>

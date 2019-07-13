@@ -13,15 +13,18 @@
 	<div class="form-group">
 
 	<div class="row">
-		<div class="col-2">
+		<div class="col-12 col-lg-4">
+			<br>
 		{{Form::label('titles', 'Titles*')}}
 		{{Form::text('titles','', ['class' => 'form-control', 'placeholder' => '<Mr. Ms. Mrs. Dr. Prof.>'])}}
 		</div>
-		<div class="col">
+		<div class="col-12 col-lg-4">
+			<br>
 		{{Form::label('f_name', 'First Name*')}}
 		{{Form::text('f_name','', ['class' => 'form-control', 'placeholder' => 'First Name'])}}
 		</div>
-		<div class="col">
+		<div class="col-12 col-lg-4">
+			<br>
 		{{Form::label('l_name', 'Last Name*')}}
 		{{Form::text('l_name','', ['class' => 'form-control', 'placeholder' => 'Last Name'])}}
 		</div>
@@ -29,16 +32,17 @@
 		<br>
 
 		<div class="row">
-			<div class="col">
+			<div class="col-12">
 				{{Form::label('faculty', 'Faculty*')}}
 				{{Form::text('faculty','', ['class' => 'form-control', 'placeholder' => 'Faculty'])}}
 			</div>
 		</div>
 		
+
 		<br>
 		{{Form::label('university', 'University*')}}
 		<div class="row">
-			<div class="col">
+			<div class="col-12 col-lg-4">
 		 <select name="university"class="form-control">
 		 	<option value="">Select a university</option>
 		@foreach($universities as $university)
@@ -46,10 +50,10 @@
 		@endforeach
 	    </select>	
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-lg-4">
 				<p style="margin-top: 8px;">Is your university not on the list?</p>
 			</div>
-			<div class="col">
+			<div class="col-12 col-lg-4">
 			<!-- Button to Open the Modal -->
 			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
 			  Add a new university!

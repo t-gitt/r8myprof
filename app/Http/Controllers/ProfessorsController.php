@@ -39,35 +39,40 @@ class ProfessorsController extends Controller
 
         $university = $request->input('university');
         $prof = $request->input('professor');
+        $sort = $request->input('sort');
         $universities = University::all();
+
+
         if ($university == 'all') {
             $professors = professors::query()
             ->where('f_name', 'LIKE', "%{$prof}%")
-            ->orwhere('l_name','LIKE', "%{$prof}%")->paginate(5);
-              $data = [
-                'professors' => $professors,
-                'universities' => $universities,
-                'prof' => $prof,
-            ]; 
-            return view('professors.list')->with($data);
+            ->orwhere('l_name','LIKE', "%{$prof}%");
+        }elseif ($prof == '') {
+            $professors = professors::query()->where('university_id', $university);
         }else{
             $professors = professors::query()->where('university_id', $university)
             ->where('f_name', 'LIKE', "%{$prof}%")
-            ->orwhere('l_name','LIKE', "%{$prof}%")->paginate(5);
-              $data = [
-                'professors' => $professors,
-                'universities' => $universities,
-                'prof' => $prof,
-            ]; 
-            return view('professors.list')->with($data);
+            ->orwhere('l_name','LIKE', "%{$prof}%");
 
             }
+        if ($sort == 'new') {
+          $professors = $professors->orderBy('created_at', 'desc')->paginate(5);
+        }elseif ($sort == 'old'){
+          $professors = $professors->orderBy('created_at', 'asc')->paginate(5);
+        }
+      $data = [
+        'professors' => $professors,
+        'universities' => $universities,
+        'prof' => $prof,
+    ]; 
+    return view('professors.list')->with($data);
+
     }
 
     public function index()
     {
         //
-       $professors = professors::paginate(3);
+       $professors = professors::orderBy('created_at', 'desc')->paginate(3);
        $ratings = ratings::all();
        $universities = University::all();
        $data = [
@@ -165,7 +170,7 @@ class ProfessorsController extends Controller
     {
         //
         $professor = professors::find($id);
-        $ratings = ratings::paginate(5)->where('prof_id', $id);
+        $ratings = ratings::where('prof_id', $id)->paginate(5);
 
         if(count($ratings) > 0){
         // get ratings sum

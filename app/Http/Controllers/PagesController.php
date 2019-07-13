@@ -14,7 +14,7 @@ class PagesController extends Controller
     public function home(){
         $ratings = ratings::all();
         $universities = University::all();
-        $professors = professors::paginate(3);
+        $professors = professors::orderBy('created_at', 'desc')->paginate(3);
     	$data = [
     		'professors' => $professors,
             'universities' => $universities,
