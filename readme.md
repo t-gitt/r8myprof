@@ -12,9 +12,10 @@ Students are able to:
 ## Installation
 * Clone the repo `git clone https://github.com/t-gitt/r8myprof.git`
 * Next, change the needed variables in `.env` file as follows:
-    * Your gmail: `MAIL_USERNAME=example@gmail.com`
-    * Gmail passwordL `MAIL_PASSWORD=********` | Create app generated gmail password for better security
-    * Mail sender: `MAIL_FROM_NAME=Example`
+    * Set gmail info for email verification:
+        * `MAIL_USERNAME=example@gmail.com`
+        * `MAIL_PASSWORD=********` 
+        * `MAIL_FROM_NAME=Example`
     * Set database info:
         * `DB_DATABASE=ratemyprof`
         * `DB_USERNAME=root`
