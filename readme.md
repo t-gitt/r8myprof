@@ -9,6 +9,14 @@ Students are able to:
 
 > In its current state signing up requires an @.edu email account to help with moderating the website.
 
+## Installation
+* Clone the repo `git clone https://github.com/t-gitt/r8myprof.git`
+* Next, change the needed variables in `.env` file as follows:
+    * Your gmail: `MAIL_USERNAME=example@gmail.com`
+    * Gmail passwordL `MAIL_PASSWORD=********`
+    > Create app generated gmail password for better security
+    * Mail sender: `MAIL_FROM_NAME=Example`
+* Run `php artisan serve` to host it on `localhost:8000` or direct your virtual host to `r8myprof/public/`
 
 ## Screenshots
 #### Home Page
