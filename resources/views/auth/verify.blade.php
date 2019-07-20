@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Verify Email' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

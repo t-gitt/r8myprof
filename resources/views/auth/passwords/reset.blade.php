@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Reset Password' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

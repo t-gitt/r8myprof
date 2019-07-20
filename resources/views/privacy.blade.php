@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Privacy Policy' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

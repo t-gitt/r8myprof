@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'faq' }}</title>
 @extends('layouts.app')
 <!--navbar-->
 @include('inc.navbar')

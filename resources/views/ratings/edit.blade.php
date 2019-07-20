@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Edit a rating' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

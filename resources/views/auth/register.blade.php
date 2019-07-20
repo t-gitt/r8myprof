@@ -1,3 +1,4 @@
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Register' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

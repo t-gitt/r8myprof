@@ -1,3 +1,5 @@
+
+    <title>{{ config('app.name', 'Laravel') . ' | ' . $professor->titles . ' ' . $professor->f_name . ' ' . $professor->l_name }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

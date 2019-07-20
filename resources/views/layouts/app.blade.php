@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="ratemyprofessor, professor, professors, ratemyprofessor, rate, r8myprofessor, ratemyprof, r8myprof, my, Professors, Professor, Rate, My, University, rating, Rating, University, universities, Univeristies, students, Students, student, Student">
+        <meta name="description" content="r8myprof is a website that allows students to rate their professors based on their teaching skills, character, and subject mastery anonymousley.">
+        <meta name="author" content="Taher Alkamel">
+        <meta http-equiv="refresh" content="30">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
