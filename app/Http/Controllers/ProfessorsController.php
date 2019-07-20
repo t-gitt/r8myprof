@@ -8,6 +8,7 @@ use \App\professors;
 use \App\University;
 use \App\Course;
 use \App\ratings;
+use DB;
 
 class ProfessorsController extends Controller
 {
@@ -24,7 +25,7 @@ class ProfessorsController extends Controller
         $universities = University::all();
         $professors = professors::query()
         ->where('f_name', 'LIKE', "%{$searchTerm}%")
-        ->orwhere('l_name','LIKE', "%{$searchTerm}%")->paginate(5);
+        ->orwhere('l_name','LIKE', "%{$searchTerm}%")->paginate(8);
           $data = [
             'professors' => $professors,
             'universities' => $universities,
@@ -56,9 +57,18 @@ class ProfessorsController extends Controller
 
             }
         if ($sort == 'new') {
-          $professors = $professors->orderBy('created_at', 'desc')->paginate(5);
+          $professors = $professors->orderBy('created_at', 'desc')->paginate(8);
         }elseif ($sort == 'old'){
-          $professors = $professors->orderBy('created_at', 'asc')->paginate(5);
+          $professors = $professors->orderBy('created_at', 'asc')->paginate(8);
+        }
+        elseif ($sort == 'bestRate') {
+            $professors = $professors->withCount(['ratings as average_rating' => function($query) {
+            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
+            }])->orderByDesc('average_rating')->paginate(8);
+        }elseif ($sort == 'lowestRate'){
+            $professors = $professors->withCount(['ratings as average_rating' => function($query) {
+            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
+            }])->orderBy('average_rating')->paginate(8);
         }
       $data = [
         'professors' => $professors,
@@ -72,7 +82,9 @@ class ProfessorsController extends Controller
     public function index()
     {
         //
-       $professors = professors::orderBy('created_at', 'desc')->paginate(3);
+       $professors = professors::withCount(['ratings as average_rating' => function($query) {
+            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
+            }])->orderByDesc('average_rating')->paginate(8);
        $ratings = ratings::all();
        $universities = University::all();
        $data = [
@@ -170,7 +182,7 @@ class ProfessorsController extends Controller
     {
         //
         $professor = professors::find($id);
-        $ratings = ratings::where('prof_id', $id)->paginate(5);
+        $ratings = ratings::where('prof_id', $id)->paginate(10);
 
         if(count($ratings) > 0){
         // get ratings sum

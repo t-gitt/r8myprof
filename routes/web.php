@@ -33,5 +33,5 @@ Route::get('/privacy', 'PagesController@privacy');
 Route::get('/faq', 'PagesController@faq');
 Route::get('/contact', 'PagesController@contact');
 Route::post('/search', 'ProfessorsController@search');
-Route::post('/filter', 'ProfessorsController@filter');
+Route::get('/filter', 'ProfessorsController@filter');
 Auth::routes(['verify' => true]);

@@ -100,7 +100,7 @@
                 <div class="panel-body">
 
                     <p>
-                    	Unfortunelty, due to our need to moderate the content on this platform, we felt it's the only solution to better manage our user base to make sure all ratings are from real students and people related to educational institutions. If you want to add your university and professors, but don't have an @edu email, please contact us at <a href="mailto:r8myprof@gmail.com">r8myprof@gmail.com</a> and we will see how we can help you!
+                    	Unfortunately, due to our need to moderate the content on this platform, we felt it's the only solution to better manage our user base to make sure all ratings are from real students and people related to educational institutions. If you want to add your university and professors, but don't have an @edu email, please contact us at <a href="mailto:r8myprof@gmail.com">r8myprof@gmail.com</a> and we will see how we can help you!
                     </p>
                 </div>
             </div>

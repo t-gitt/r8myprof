@@ -80,6 +80,12 @@ class RatingsController extends Controller
     {
         //
         try { 
+
+            $pcharacterW = $request->input('pcharacter_rating') * 0.35;
+            $pteachingW = $request->input('pteaching_rating') * 0.4;
+            $pmasteryW = $request->input('pmastery_rating') * 0.25;
+            $overallRating = $pcharacterW + $pteachingW + $pmasteryW;
+
             $this->validate($request, [
             'prof_id' => 'required',
             'student_id' => 'required',
@@ -88,7 +94,6 @@ class RatingsController extends Controller
             'pteaching_rating' => 'required',
             'pcharacter_rating' => 'required',
             'pmastery_rating' => 'required',
-            'comment' => 'required',
         ]);
         // Create Rating
         $rating = new ratings;
@@ -99,6 +104,7 @@ class RatingsController extends Controller
         $rating->pteaching_rating = $request->input('pteaching_rating');
         $rating->pcharacter_rating = $request->input('pcharacter_rating');
         $rating->pmastery_rating = $request->input('pmastery_rating');
+        $rating->poverall_rating = $overallRating;
         $rating->comment = $request->input('comment');
         $rating->save();
         return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Rating added');

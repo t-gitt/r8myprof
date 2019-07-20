@@ -7,6 +7,7 @@ use \App\ratings;
 use \App\professors;
 use \App\University;
 use Auth;
+use DB;
 
 class PagesController extends Controller
 {
@@ -14,7 +15,9 @@ class PagesController extends Controller
     public function home(){
         $ratings = ratings::all();
         $universities = University::all();
-        $professors = professors::orderBy('created_at', 'desc')->paginate(3);
+       $professors = professors::withCount(['ratings as average_rating' => function($query) {
+            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
+            }])->orderByDesc('average_rating')->paginate(8);
     	$data = [
     		'professors' => $professors,
             'universities' => $universities,

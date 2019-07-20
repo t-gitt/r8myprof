@@ -8,7 +8,7 @@
 
 
 		<div class="row">
-			<form action="/filter" method="POST" role="search" style="width: 100%;">
+			<form action="/filter" method="GET" role="search" style="width: 100%;">
 			    {{ csrf_field() }}
 			        <div class="input-group">
 			                <input name="professor"type="text"class="form-control"placeholder="Name">
@@ -21,6 +21,8 @@
 			                        @endif
 			                </select>
 			                <select name="sort" id="sort" class="form-control">
+			                    <option value="bestRate">Sort by best rated</option>
+			                    <option value="lowestRate">Sort by worst rated</option>
 			                    <option value="new">Sort by new</option>
 			                    <option value="old">Sort by old</option>
 			                </select>
@@ -29,9 +31,11 @@
 
 			    </form>
 			</div>
-
-@if(count($professors) > 0)
+			@if(count($professors) > 0)
 	@foreach($professors as $professor)
+<?php 
+($professor->ratings);
+?>
 <hr>
 		<div class="well">
 			<div class="row">
@@ -125,7 +129,7 @@
 			<br>
 		</div>
 	@endforeach
-	  {{ $professors->links() }}
+	  {{ $professors->appends(request()->input())->links() }}
 @else
 	<p style="text-align:center;"> No professors found </p>
 @endif
