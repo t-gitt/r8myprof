@@ -1,6 +1,8 @@
 # r8myprof
 r8myprof is a laravel web platform that allows students to rate their professors and courses in order to have a public record of professors' performence.
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
 ## Functions
 Students are able to:
 * Add new professors and assign them to a university.
