@@ -11,10 +11,11 @@
 
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                <strong>
                  <h4 class="panel-title">
                     <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> What is r8myprof?</a>
               </h4>
-
+                </strong>
             </div>
             <div id="question0" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
@@ -29,9 +30,12 @@
 
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+
+                <strong>
                  <h4 class="panel-title">
                     <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> Will my professors know who I am?</a>
               </h4>
+          </strong>
 
             </div>
             <div id="question1" class="panel-collapse collapse" style="height: 0px;">
@@ -47,9 +51,12 @@
         <br>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
+
+                <strong>
                  <h4 class="panel-title">
                     <a id="faqHelp"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> How can I help?</a>
               </h4>
+          </strong>
 
             </div>
             <div id="question2" class="panel-collapse collapse" style="height: 0px;">
@@ -74,9 +81,12 @@
 <br>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+
+                <strong>
                  <h4 class="panel-title">
                     <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> I am a professor, how can I better represent my profile?</a>
               </h4>
+          </strong>
 
             </div>
             <div id="question3" class="panel-collapse collapse" style="height: 0px;">
@@ -92,9 +102,12 @@
 <br>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
+
+                <strong>
                  <h4 class="panel-title">
                     <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> Why do I need an @edu email to sign up?</a>
               </h4>
+          </strong>
 
             </div>
             <div id="question4" class="panel-collapse collapse" style="height: 0px;">
@@ -110,9 +123,12 @@
 <br>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question5">
+
+                <strong>
                  <h4 class="panel-title">
                     <a id="overallscore"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> How do we calculate the overall score for professors?</a>
               </h4>
+          </strong>
 
             </div>
             <div id="question5" class="panel-collapse collapse" style="height: 0px;">

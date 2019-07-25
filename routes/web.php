@@ -29,6 +29,7 @@ Route::resource('professors', 'ProfessorsController');
 Route::get('/home', 'PagesController@home');
 Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
+Route::get('/professor/{letter}', 'ProfessorsController@letter');
 Route::get('/privacy', 'PagesController@privacy');
 Route::get('/faq', 'PagesController@faq');
 Route::get('/contact', 'PagesController@contact');

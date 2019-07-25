@@ -50,8 +50,6 @@ class RatingsController extends Controller
     {
         //
     if(Auth::check()){
-        $rating = ratings::all()->where('prof_id', $prof_id)->where('student_id', Auth::id());
-        if(count($rating) == 0){
             $student_id = auth()->user()->id;
             $prof_id = $prof_id;
             $professor = professors::find($prof_id);
@@ -64,9 +62,6 @@ class RatingsController extends Controller
                 'professor' => $professor,
             ];
             return view('ratings.create')->with($data);
-        } else{
-            return redirect('/professors/'.$prof_id)->with('success', 'You already have rated this professor.')->with('rating', $rating);
-        }
     }  
     }
 

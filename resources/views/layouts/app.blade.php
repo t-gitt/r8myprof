@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+<?php
+$ps = DB::table('professors')->get();
+$us = DB::table('universities')->get();
+?>
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="ratemyprofessor, professor, professors, ratemyprofessor, rate, r8myprofessor, ratemyprof, r8myprof, my, Professors, Professor, Rate, My, University, rating, Rating, University, universities, Univeristies, students, Students, student, Student">
-        <meta name="description" content="r8myprof is a website that allows students to rate their professors based on their teaching skills, character, and subject mastery anonymousley.">
+        <meta name="keywords" content="ratemyprofessor, professor, professors, ratemyprofessor, rate, r8myprofessor, ratemyprof, r8myprof, my, Professors, Professor, Rate, My, University, rating, Rating, University, universities, Univeristies, students, Students, student, Student
+        @foreach($ps as $p)
+          {{', ' . $p->f_name . ', ' . $p->l_name}}
+        @endforeach
+        @foreach($us as $u)
+          {{', ' . $u->name . ', ' . $u->abrv}}
+        @endforeach
+        ">
+        <meta name="description" content="r8myprof is a website that allows students to anonymousley rate their professors based on their teaching skills, character, and subject mastery.">
         <meta name="author" content="Taher Alkamel">
-        <meta http-equiv="refresh" content="30">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -37,7 +47,8 @@
 </head>
 <style>
 
-
+a.alphabets{color:#3490dc !important;}    
+a.alp{color:#181818}
 
 
 .coursestar-rating {
@@ -217,6 +228,7 @@
 }
 </style>
 <body style="background-color:white;">
+
     <div id="app">
 
         <div class="container">     

@@ -1,4 +1,4 @@
-<title>{{ config('app.name', 'Laravel') . ' | ' . 'Home' }}</title>
+<title>{{ config('app.name', 'Laravel') . ' | ' . 'Professors ratings website' }}</title>
 @extends('layouts.app')
 
 <!--navbar-->

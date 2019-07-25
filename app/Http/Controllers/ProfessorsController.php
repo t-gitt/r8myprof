@@ -26,7 +26,10 @@ class ProfessorsController extends Controller
         $professors = professors::query()
         ->where('f_name', 'LIKE', "%{$searchTerm}%")
         ->orwhere('l_name','LIKE', "%{$searchTerm}%")->paginate(8);
+
+       $letter = 'all';
           $data = [
+            'letter' => $letter,
             'professors' => $professors,
             'universities' => $universities,
             'searchTerm' => $searchTerm,
@@ -70,7 +73,10 @@ class ProfessorsController extends Controller
             $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
             }])->orderBy('average_rating')->paginate(8);
         }
+
+       $letter = 'all';
       $data = [
+        'letter' => $letter,
         'professors' => $professors,
         'universities' => $universities,
         'prof' => $prof,
@@ -79,16 +85,28 @@ class ProfessorsController extends Controller
 
     }
 
-    public function index()
-    {
-        //
-       $professors = professors::withCount(['ratings as average_rating' => function($query) {
-            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
-            }])->orderByDesc('average_rating')->paginate(8);
+    public function letter($letter){
+        $professors = professors::query()->where('f_name', 'LIKE', $letter.'%')->paginate(8);
        $ratings = ratings::all();
        $universities = University::all();
        $data = [
         'professors' => $professors,
+        'letter' => $letter,
+        'universities' => $universities,
+        'ratings' => $ratings,
+        ];
+       return view('professors.list')->with($data);
+    }
+    public function index()
+    {
+        //
+       $professors = professors::orderBy('created_at', 'desc')->paginate(8);
+       $ratings = ratings::all();
+       $universities = University::all();
+       $letter = 'all';
+       $data = [
+        'professors' => $professors,
+        'letter' => $letter,
         'universities' => $universities,
         'ratings' => $ratings,
         ];

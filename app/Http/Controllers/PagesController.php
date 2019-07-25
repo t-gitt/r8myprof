@@ -15,11 +15,11 @@ class PagesController extends Controller
     public function home(){
         $ratings = ratings::all();
         $universities = University::all();
-       $professors = professors::withCount(['ratings as average_rating' => function($query) {
-            $query->select(DB::raw('coalesce(avg(poverall_rating),0)'));
-            }])->orderByDesc('average_rating')->paginate(8);
+       $professors = professors::orderBy('created_at', 'desc')->paginate(8);
+       $letter = 'all';
     	$data = [
     		'professors' => $professors,
+            'letter' => $letter,
             'universities' => $universities,
             'ratings' => $ratings,
     	];
