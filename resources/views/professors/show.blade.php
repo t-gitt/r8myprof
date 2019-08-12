@@ -75,10 +75,16 @@ echo "<a style='color:green;'>";
 					<?php $header = null; ?>
 					@foreach($ratings as $rating)
 						@if ($header != $rating->course['code'])
-					<li>
-					 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
-				 	</li>
-				 		<?php $header = $rating->course['code'] ?>
+							@if ($rating->course['code'] === '0')
+								<li>
+								 	{{'  ' . $rating->course['name'] }}&nbsp;
+							 	</li>
+							 	@else
+								<li>
+								 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
+							 	</li>
+							 	@endif
+					 		<?php $header = $rating->course['code'] ?>
 					 	@endif
 					@endforeach
 				</ul>
@@ -164,7 +170,11 @@ echo "<span style='color:green;'>";
 
 				<div class="col-sm-12">
 
-			 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
+					@if ($rating->course['code'] === '0')
+					 	{{'  ' . $rating->course['name'] }}&nbsp;
+					@else
+					 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
+				 	@endif
 			 </div>
 				<div class="col-sm-12">
 <?php

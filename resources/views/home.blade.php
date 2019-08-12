@@ -30,7 +30,7 @@
             <div class="container">
                 
         <br>
-                @include('inc.professors.list')
+                @include('inc.professors.home_list')
             </div>
     </div>
 </div>
