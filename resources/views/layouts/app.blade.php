@@ -211,12 +211,7 @@ a.alp{color:#181818}
   position: relative;
   t/op: 2px;
 }
-
-
-
-
-
-    .pic {
+.pic {
   display: inline-block;
   width: 120px;
   height: 150px;
@@ -226,8 +221,28 @@ a.alp{color:#181818}
 }
 #app{
 }
+.btn-outline-light, .btn-dark ,.btn-primary{
+background-color: #061B49;
+color:#FFF;
+border-color: #2F3E48;
+}
+.btn-danger{
+background-color: #9A073C;
+color:#FFF;
+border-color: #9A073C;
+}
+.btn-outline-primary{
+background-color: #e6e8dc;
+color:black;
+border-color: #061B49;
+}
+.btn-outline-danger{
+background-color: #e6e8dc;
+color:black;
+border-color: #9A073C;
+}
 </style>
-<body style="background-color:white;">
+<body style="background-color:#e6e8dc;">
 
     <div id="app">
 

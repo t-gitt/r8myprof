@@ -8,16 +8,17 @@
 <div class="container">
 	<div class="row">
 			<div class="col-md-4 col-sm-4">
-				<img class="pic"src="/storage/prof_pics/{{$professor->prof_pic}}" alt="professor picture">
+				<img class="pic"src="/prof_pics/{{$professor->prof_pic}}" alt="professor picture">
 			</div>
 			<div style="margin-top:70px;"class="col">
 
 				<h3><strong>{{$professor->titles . ' '}}</strong> <a style="color:#181818;"href="{{$professor->url}}">{{$professor->f_name . ' ' . $professor->l_name}}</a></h3>
-				
+
 				<h4><strong>({{$professor->university['abrv']}})</strong> <a href="{{$professor->university['url']}}">{{$professor->university['name']}}</a> {{', ' . $professor->university['country']}}</h4>
 				<h4>{{$professor->faculty}}</h4>
 				<br>
 				<a href="/rating/create/{{$professor->id}}" class="btn btn-dark">Rate</a>
+				<a href="/professors/{{$professor->id}}/report" class="btn btn-danger float-right">Report</a>
 			</div>
 		</div>
 			<br>
@@ -75,24 +76,18 @@ echo "<a style='color:green;'>";
 					<?php $header = null; ?>
 					@foreach($ratings as $rating)
 						@if ($header != $rating->course['code'])
-							@if ($rating->course['code'] === '0')
-								<li>
-								 	{{'  ' . $rating->course['name'] }}&nbsp;
-							 	</li>
-							 	@else
-								<li>
-								 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
-							 	</li>
-							 	@endif
-					 		<?php $header = $rating->course['code'] ?>
+					<li>
+					 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
+				 	</li>
+				 		<?php $header = $rating->course['code'] ?>
 					 	@endif
 					@endforeach
 				</ul>
 					@endif
 </div>
-<div class="container" style="color:#181818;background-color:white; width:100%; ">
-<br>	
-<h3><span class="" style="color:#FC5C5C;">|</span> Ratings</h3>
+<div class="container" style="color:#181818;background-color:#e6e8dc; width:100%; ">
+<br>
+<h3><span class="" style="color:#9A073C;">|</span> Ratings</h3>
 		<?php
 		$i=1;
 		$r=0;
@@ -105,8 +100,8 @@ echo "<a style='color:green;'>";
 <div style="color:#181818;padding:30px;padding-bottom: 0 !important;padding-bottom: 0 !important;">
 
 <div class="row">
-		<p style=""><span class="" style="color:#FC5C5C;"><strong>{{$i}} | </strong></span>&nbsp </p>
-	
+		<p style=""><span class="" style="color:#9A073C;"><strong>{{$i}} | </strong></span>&nbsp </p>
+
 		<p style="color:#181818;"><strong>Overall Score:</strong></p>
 			<p style="margin-bottom:-10px;color:#181818;">
 
@@ -170,11 +165,7 @@ echo "<span style='color:green;'>";
 
 				<div class="col-sm-12">
 
-					@if ($rating->course['code'] === '0')
-					 	{{'  ' . $rating->course['name'] }}&nbsp;
-					@else
-					 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
-				 	@endif
+			 	{{'  ' . $rating->course['code'] . ' - ' .$rating->course['name'] }}&nbsp;
 			 </div>
 				<div class="col-sm-12">
 <?php
@@ -342,7 +333,7 @@ echo "<span style='color:green;'>";
 </span>
 </div>
 		</p>
-	</div>  
+	</div>
 </div>
 
 </div>
@@ -361,7 +352,7 @@ echo "<span style='color:green;'>";
 
 	<div class="row">
 <div class="col">
-	@if(Auth::check())	
+	@if(Auth::check())
 	@if($rating->student_id == Auth::id())
 	<div class="row pull-right">
 		<div class="col">
@@ -380,7 +371,7 @@ echo "<span style='color:green;'>";
 </div>
 </div>
 
-	
+
 
 		<?php
 		$i++;

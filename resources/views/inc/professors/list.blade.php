@@ -71,30 +71,25 @@
 				    	<a href="/professor/x" class="btn alp <?php if($letter === 'x') {echo 'alphabets'; } ?>">X</a>
 				    	<a href="/professor/y" class="btn alp <?php if($letter === 'y') {echo 'alphabets'; } ?>">Y</a>
 				    	<a href="/professor/z" class="btn alp <?php if($letter === 'z') {echo 'alphabets'; } ?>">Z</a>
-				    	
+
 				    </div>
 			    </div>
 			@if(count($professors) > 0)
 	@foreach($professors as $professor)
-<?php 
+<?php
 ($professor->ratings);
 ?>
 		<div class="well">
-<hr>
+		<hr>
 			<div class="row">
 			<div class="col-md-4 col-sm-4">
-					<a href="/professors/{{$professor->id}}"><img class="pic"src="/storage/prof_pics/{{$professor->prof_pic}}" alt="professor picture"></a>
+				<a href="/professors/{{$professor->id}}"><img class="pic"src="/prof_pics/{{$professor->prof_pic}}" alt="professor picture"></a>
 			</div>
 			<div class="col-md-8 col-sm-4">
 			<br>
 			<h3> <a style="color:#181818;"href="/professors/{{$professor->id}}">{{$professor->titles . ' ' . $professor->f_name . ' '. $professor->l_name}}</a></h3>
-
-
-
-
 			<p style="color:grey;">&nbsp; <strong><a style="color:grey;"href="{{$professor->university['url']}}">{{$professor->university['abrv'] . ', '}}</a> {{ $professor->university['country']}}</strong></p>
 				@if(count($professor->ratings) > 0)
-
 				<h2>
 				<?php
 								$ratingSum = 0;
@@ -159,10 +154,10 @@
 				</div>
 			</div>
 			<div style="text-align:right;"class="col-4">
-					
+
 				<a href="/rating/create/{{$professor->id}}" style="color:white;"class="btn btn-dark">Rate</a>
 			</div>
-				
+
 			</div>
 		</div>
 			</div>
@@ -177,25 +172,6 @@
 
 <br>
 <div style="text-align: center;">
-<a href="/professors/create" class="btn btn-dark">Add a professor</a>
+<a href="/professors/create" class="btn btn-primary">Add a professor</a>
 </div>
 </div>
-
-
-
-
-
-<!--
-<form action="/filter" method="POST" role="search">
-    {{ csrf_field() }}
-    <div class="input-group">
-        <input type="text" class="form-control" name="keyword"
-            placeholder="Search for"> 
-		 <select name="filter"class="form-control">
-		 	<option value="professor">Professors</option>
-	        <option value="university">Universities</option>
-	        <option value="country">Countries</option>
-	    </select>	
-                </div>
-</form>
--->

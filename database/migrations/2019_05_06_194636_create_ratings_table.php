@@ -22,20 +22,21 @@ class CreateRatingsTable extends Migration
             $table->integer('pcharacter_rating');
             $table->integer('pteaching_rating');
             $table->integer('pmastery_rating');
+            $table->double('poverall_rating',8,2);
             $table->text('comment');
             $table->timestamps();
-            $table->unique(['student_id', 'prof_id', 'course_id']); 
+            $table->unique(['student_id', 'prof_id', 'course_id']);
           });
 
           Schema::enableForeignKeyConstraints();
 
            Schema::table('ratings', function (Blueprint $table) {
-                  
-                      $table->foreign('prof_id')->references('id')->on('professors')->onDelete('cascade');
-                      $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-                      $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
 
- 
+            $table->foreign('prof_id')->references('id')->on('professors')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
+
         });
     }
 

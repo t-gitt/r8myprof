@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\University;
+use \App\professors;
+use \App\ratings;
+use DB;
 
 class UniversitiesController extends Controller
 {
@@ -66,7 +69,15 @@ class UniversitiesController extends Controller
      */
     public function show($id)
     {
-        //
+        $universities = University::find($id);
+        $professors = DB::select('select * from professors where university_id = ?',[$id]);
+
+        $data = [
+         'professors' => $professors,
+         'universities' => $universities,
+         ];
+        return view('universities.proflist')->with($data);
+    
     }
 
     /**
@@ -101,5 +112,19 @@ class UniversitiesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchCountry(Request $request){
+
+        $searchTerm = $request->input('query');
+        $universities = University::query()
+        ->where('country', 'LIKE', "%{$searchTerm}%")->paginate(10);
+
+          $data = [
+            'universities' => $universities,
+            'searchTerm' => $searchTerm,
+        ]; 
+        return view('universities.list')->with($data);
+
     }
 }
