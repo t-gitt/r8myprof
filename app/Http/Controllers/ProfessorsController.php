@@ -33,7 +33,7 @@ class ProfessorsController extends Controller
             'professors' => $professors,
             'universities' => $universities,
             'searchTerm' => $searchTerm,
-        ]; 
+        ];
         return view('professors.list')->with($data);
 
     }
@@ -80,7 +80,7 @@ class ProfessorsController extends Controller
         'professors' => $professors,
         'universities' => $universities,
         'prof' => $prof,
-    ]; 
+    ];
     return view('professors.list')->with($data);
 
     }
@@ -131,7 +131,7 @@ class ProfessorsController extends Controller
                     'professors' => $professors,
                     'universities' => $universities,
                     'courses' => $courses,
-                ]; 
+                ];
                return view('professors.add')->with($data);
             }
            return redirect('/email/verify');
@@ -175,7 +175,7 @@ class ProfessorsController extends Controller
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
-        
+
 
         // Create Professor
         $professor = new professors;
@@ -187,6 +187,7 @@ class ProfessorsController extends Controller
         $professor->university_id = $request->input('university');
         $professor->prof_pic = $fileNameToStore;
         $professor->save();
+        
         return redirect('/professors')->with('success', 'Professor added');
     }
 
@@ -267,4 +268,5 @@ class ProfessorsController extends Controller
     {
         //
     }
+
 }

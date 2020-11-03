@@ -15,12 +15,11 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('ratings', 'RatingsController');
 Route::get('/rating/create/{id}', 'RatingsController@create');
 Route::resource('courses', 'CoursesController');
 Route::resource('university', 'UniversitiesController');
-
-
 
 });
 
@@ -34,5 +33,11 @@ Route::get('/privacy', 'PagesController@privacy');
 Route::get('/faq', 'PagesController@faq');
 Route::get('/contact', 'PagesController@contact');
 Route::post('/search', 'ProfessorsController@search');
+Route::get('/searchCountry', 'UniversitiesController@searchCountry');
 Route::get('/filter', 'ProfessorsController@filter');
+Route::resource('report', 'ReportsController');
+Route::get('/professors/{id}/report', 'ReportsController@create');
+Route::post('/professors/{pid}/storeReport', 'ReportsController@store');
+Route::get('/live_search/action', 'LiveSearchController@action')->name('live_search.action');
+Route::get('/university/{id}', 'UniversitiesController@show');
 Auth::routes(['verify' => true]);

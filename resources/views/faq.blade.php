@@ -13,7 +13,7 @@
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
                 <strong>
                  <h4 class="panel-title">
-                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> What is r8myprof?</a>
+                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> What is r8myprof?</a>
               </h4>
                 </strong>
             </div>
@@ -33,7 +33,7 @@
 
                 <strong>
                  <h4 class="panel-title">
-                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> Will my professors know who I am?</a>
+                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> Will my professors know who I am?</a>
               </h4>
           </strong>
 
@@ -54,7 +54,7 @@
 
                 <strong>
                  <h4 class="panel-title">
-                    <a id="faqHelp"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> How can I help?</a>
+                    <a id="faqHelp"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> How can I help?</a>
               </h4>
           </strong>
 
@@ -66,11 +66,11 @@
                     	We hope to have you involved in the development process of this platform!
                     	Whether you are a developer, designer, a student, or someone who is passionate about fixing the educational process in our universities, we have a place for you!
                     	<ul>
-                    		<li>If you are a <span style="color:#F04646;">developer</span>, you can go to our <a href="https://github.com/t-gitt/r8myprof">github repo</a> and contribute by submitting bugs, exploits, enhancments, or suggestions to further improve this platform!</li>
+                    		<li>If you are a <span style="color:#9A073C;">developer</span>, you can go to our <a href="https://github.com/t-gitt/r8myprof">github repo</a> and contribute by submitting bugs, exploits, enhancments, or suggestions to further improve this platform!</li>
                     		<br>
-                    		<li>If you have extra time on your hand, we can use an extra <span style="color:#F04646">moderator!</span> With ratings coming in, we need to make sure they are respectful, objective, and do not violate internet etiquites. Send us an email at <a href="mailto:r8myprof@gmail.com">r8myprof@gmail.com</a> to volunteer for moderating content here! </li>
+                    		<li>If you have extra time on your hand, we can use an extra <span style="color:#9A073C">moderator!</span> With ratings coming in, we need to make sure they are respectful, objective, and do not violate internet etiquites. Send us an email at <a href="mailto:r8myprof@gmail.com">r8myprof@gmail.com</a> to volunteer for moderating content here! </li>
                     		<br>
-                    		<li>There is more to resources than time. If you don't have the time but still want to contribute, you can <span style="color:#F04646">donate </span>to the developer <a href="https://www.paypal.me/Taheralkamel">here </a>to make sure this platform stays up and running!</li>
+                    		<li>There is more to resources than time. If you don't have the time but still want to contribute, you can <span style="color:#9A073C">donate </span>to the developer <a href="https://www.paypal.me/Taheralkamel">here </a>to make sure this platform stays up and running!</li>
                     	</ul>
                     </p>
                 </div>
@@ -84,7 +84,7 @@
 
                 <strong>
                  <h4 class="panel-title">
-                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> I am a professor, how can I better represent my profile?</a>
+                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> I am a professor, how can I better represent my profile?</a>
               </h4>
           </strong>
 
@@ -105,7 +105,7 @@
 
                 <strong>
                  <h4 class="panel-title">
-                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> Why do I need an @edu email to sign up?</a>
+                    <a style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> Why do I need an @edu email to sign up?</a>
               </h4>
           </strong>
 
@@ -126,7 +126,7 @@
 
                 <strong>
                  <h4 class="panel-title">
-                    <a id="overallscore"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#F04646;">|</span> How do we calculate the overall score for professors?</a>
+                    <a id="overallscore"style="color:#181818;"href="javascript:void(0);" class="ing"><span style="color:#9A073C;">|</span> How do we calculate the overall score for professors?</a>
               </h4>
           </strong>
 
@@ -147,15 +147,15 @@
                     	<tbody >
                     		<tr>
                     			<td>Character</td>
-                    			<td style="text-align:center;color:#F04646;">35%</td>
+                    			<td style="text-align:center;color:#9A073C;">35%</td>
                     		</tr>
                     		<tr>
                     			<td>Teaching Methods</td>
-                    			<td style="text-align:center;color:#F04646;">40%</td>
+                    			<td style="text-align:center;color:#9A073C;">40%</td>
                     		</tr>
                     		<tr>
                     			<td>Course Mastery</td>
-                    			<td style="text-align:center;color:#F04646;">25%</td>
+                    			<td style="text-align:center;color:#9A073C;">25%</td>
                     		</tr>
                     	</tbody>
                     </table>

@@ -18,17 +18,16 @@ class CreateCoursesTable extends Migration
             $table->unsignedbiginteger('university_id')->unsigned()->nullable();
             $table->string('code');
             $table->string('name');
-            $table->unique(['university_id', 'code']); 
+            $table->unique(['university_id', 'code']);
             $table->timestamps();
         });
 
-          Schema::enableForeignKeyConstraints();
+            Schema::enableForeignKeyConstraints();
+            Schema::table('courses', function (Blueprint $table) {
 
-           Schema::table('courses', function (Blueprint $table) {
-                  
-                  $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
+                    $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
 
- 
+
         });
     }
 

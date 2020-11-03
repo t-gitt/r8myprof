@@ -62,7 +62,7 @@ class RatingsController extends Controller
                 'professor' => $professor,
             ];
             return view('ratings.create')->with($data);
-    }  
+    }
     }
 
     /**
@@ -74,7 +74,7 @@ class RatingsController extends Controller
     public function store(Request $request)
     {
         //
-        try { 
+        try {
 
             $pcharacterW = $request->input('pcharacter_rating') * 0.35;
             $pteachingW = $request->input('pteaching_rating') * 0.4;
@@ -103,11 +103,12 @@ class RatingsController extends Controller
         $rating->comment = $request->input('comment');
         $rating->save();
         return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Rating added');
-} catch(\Illuminate\Database\QueryException $ex){ 
+
+    }catch(\Illuminate\Database\QueryException $ex){
 
         return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Most likely you have already rated this professor. If you didn\'t, please contact us at r8myprof@gmail.com to help u solve this issue.');
-}
-        
+        }
+
     }
 
     /**
@@ -152,8 +153,8 @@ class RatingsController extends Controller
             return redirect('/professors/'.$prof_id)->with('success', 'One cannot edit what one did not create!')->with('rating', $rating);
         }
 
-    }  
-    
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -167,7 +168,7 @@ class RatingsController extends Controller
         //
         $rating = ratings::find($id);
         if($rating->student_id == Auth::id()){
-            try { 
+            try {
                 $this->validate($request, [
                 'prof_id' => 'required',
                 'student_id' => 'required',
@@ -190,7 +191,7 @@ class RatingsController extends Controller
             $rating->comment = $request->input('comment');
             $rating->save();
             return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Rating updated');
-            } catch(\Illuminate\Database\QueryException $ex){ 
+            } catch(\Illuminate\Database\QueryException $ex){
 
                 return redirect("/professors/{$request->input('prof_id')}")->with('success', 'Most likely you have already rated this professor. If you didn\'t, please contact us at r8myprof@gmail.com to help u solve this issue.');
             }

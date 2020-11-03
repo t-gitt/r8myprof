@@ -8,11 +8,13 @@ use University;
 
 class professors extends Model
 {
-    //
-         public function ratings(){
-    return $this->hasMany('App\ratings', 'prof_id');
+    public function ratings(){
+
+        return $this->hasMany('App\ratings', 'prof_id');
   }
-      public function university(){
-      	return $this->belongsTo('App\University', 'university_id');
-      }
+    public function university(){
+
+        return $this->belongsTo('App\University', 'university_id');
+    }
+
 }
